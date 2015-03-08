@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.pzhu.jsj.pts.mapper.exam">
+
+    <select id="selectExamDto" parameterType="map" resultType="cn.pzhu.jsj.pts.dto.ExamDto">    	
+    	select e.id id,e.name name,e.start_time startTime,e.end_time endTime,e.score score,e.status status,e.type type,
+			c.id courseId,c.name courseName,
+    		t.id teacherId,t.name teacherName,t.account teacherAccount from (exam e left join course c on c.id=e.course_id) left join teacher t on t.id=c.teacher_id 
+    		 WHERE 1 = 1 
+			  <if test="examName != null">
+			    AND e.name like #{examName} 
+			  </if>
+			  <if test="status != null">
+			    AND e.status=#{status} 
+			  </if>
+			  <if test="teacherName != null">
+			    AND t.name like #{teacherName} 
+			  </if>
+			  <if test="courseName != null">
+			    AND c.name like #{courseName} 
+			  </if>
+			order by e.id desc limit #{offset},#{pageSize}
+    </select>
+
+    <select id="selectCountExamDto" parameterType="map" resultType="int">
+    	select count(e.id) from (exam e left join course c on c.id=e.course_id) left join teacher t on t.id=c.teacher_id 
+    		 WHERE 1 = 1 
+			  <if test="examName != null">
+			    AND e.name like #{examName} 
+			  </if>
+			  <if test="status != null">
+			    AND e.status=#{status} 
+			  </if>
+			  <if test="teacherName != null">
+			    AND t.name like #{teacherName} 
+			  </if>
+			  <if test="courseName != null">
+			    AND c.name like #{courseName} 
+			  </if>
+    </select>
+
+</mapper>

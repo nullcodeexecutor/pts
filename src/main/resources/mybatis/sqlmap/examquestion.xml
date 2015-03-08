@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.pzhu.jsj.pts.mapper.examquestion">
+
+<!-- 
+	考试时查询题目
+ -->
+    
+    <select id="selectSelectQuestion" parameterType="map" resultType="cn.pzhu.jsj.pts.dto.SelectQuestionDto">    	
+    	select s.id id,s.content content,s.language_type languageType,s.difficulty_type difficultyType,s.create_time createTime 
+    	 from select_question s inner join paper_info p on s.id=p.question_id where p.type=1 and p.paper_id=#{paperId}
+    </select>
+    
+    <select id="selectTFQuestion" parameterType="map" resultType="cn.pzhu.jsj.pts.domain.TfQuestion">    	
+    	select tf.id id,tf.content content,tf.language_type languageType,tf.difficulty_type difficultyType,tf.create_time createTime,tf.teacher_id teacherId  
+    	 from tf_question tf inner join paper_info p on tf.id=p.question_id where p.type=2 and p.paper_id=#{paperId}
+    </select>
+    
+    <select id="selectCodeQuestion" parameterType="map" resultType="cn.pzhu.jsj.pts.domain.CodeQuestion">    	
+    	select c.id id,c.content content,c.code code,c.language_type languageType,c.difficulty_type difficultyType,c.create_time createTime,c.teacher_id teacherId  
+    	 from code_question c inner join paper_info p on c.id=p.question_id where p.type=3 and p.paper_id=#{paperId}
+    </select>
+
+</mapper>

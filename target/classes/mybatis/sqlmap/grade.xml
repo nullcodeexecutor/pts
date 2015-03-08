@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.pzhu.jsj.pts.mapper.grade">
+
+    <select id="selectGradeDto" parameterType="map" resultType="cn.pzhu.jsj.pts.dto.ExamGradeDto">    	
+    	select e.id examId,e.name examName,e.score examScore,e.start_time startTime,e.end_time endTime,e.type type,g.score score,g.paper_id paperId,g.submit_time submitTime from exam e left join grade g on g.exam_id=e.id where e.course_id=#{courseId}
+    </select>
+    
+    <select id="selectStudentGradeDto" parameterType="map" resultType="cn.pzhu.jsj.pts.dto.StudentGradeDto">    	
+    	select s.id studentId,s.name studentName,s.account account,s.class_name className,s.depart_name departName,g.score score,g.id gradeId,g.submit_time submitTime from student s inner join grade g on g.student_id=s.id 
+    		where g.exam_id=#{examId} 
+    		 <if test="account != null">
+			    AND s.account = #{account} 
+			 </if>
+    		 <if test="name != null">
+			    AND s.name = #{name} 
+			 </if>
+    		 <if test="className != null">
+			    AND s.class_name = #{className} 
+			 </if>
+    		 <if test="departName != null">
+			    AND s.depart_name = #{departName} 
+			 </if>
+			 limit #{offset},#{pageSize} 
+    </select>    
+    
+    
+    <select id="countStudentGradeDto" parameterType="map" resultType="int">    	
+    	select count(g.id) from student s inner join grade g on g.student_id=s.id 
+    		where g.exam_id=#{examId}
+    		 <if test="account != null">
+			    AND s.account = #{account} 
+			 </if>
+    		 <if test="name != null">
+			    AND s.name = #{name} 
+			 </if>
+    		 <if test="className != null">
+			    AND s.class_name = #{className} 
+			 </if>
+    		 <if test="departName != null">
+			    AND s.depart_name = #{departName} 
+			 </if>
+    </select>    
+
+</mapper>

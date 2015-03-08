@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.pzhu.jsj.pts.mapper.user">
+
+    <select id="selectTeacherDto" parameterType="map" resultType="cn.pzhu.jsj.pts.dto.TeacherDto">    
+    	select t.id teacherId,t.account account,t.name name,u.id userId,u.enabled enabled from teacher t left join user u on t.account=u.name
+			order by t.id desc limit #{offset},#{pageSize}
+    </select>    
+    
+    <select id="selectAdminDto" parameterType="map" resultType="cn.pzhu.jsj.pts.dto.AdminDto">    
+    	select a.id adminId,a.account account,a.name name,a.email email,u.id userId,u.enabled enabled from admin a left join user u on a.account=u.name
+			order by a.id desc limit #{offset},#{pageSize}
+    </select>    
+
+</mapper>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+       
+	<bean id="readExcelStudent" class="cn.pzhu.jsj.pts.bean.ReadExcelStudent">
+		 <property name="xlsPath">
+	            <value>${xls.path}</value>
+	     </property>
+    </bean>
+    
+    <!-- 以下是在线编程方面的配置， 全部不能用单例啊 -->
+    <bean id="commandInvoker" class="cn.pzhu.jsj.pts.bean.program.cmd.CommandInvoker" scope="prototype">
+    	<property name="envEncoding">
+	            <value>${envEncoding}</value>
+	     </property>
+    </bean>
+    
+    <!-- c语言编译器的配置 -->
+    
+    <bean id="cFileHandler" class="cn.pzhu.jsj.pts.bean.program.file.CFileHandler" scope="prototype">
+    	<property name="filePath">
+	            <value>${c.path}</value>
+	     </property>
+    </bean>
+    
+    <bean id="cCompiler" class="cn.pzhu.jsj.pts.bean.program.compile.CCompiler" scope="prototype">
+    	<property name="filePath">
+	            <value>${c.path}</value>
+	     </property>
+    </bean>
+    
+    <bean id="cRunner" class="cn.pzhu.jsj.pts.bean.program.run.CRunner" scope="prototype">
+    </bean>
+    
+    <bean id="cCompileAndRun" class="cn.pzhu.jsj.pts.bean.program.CompileAndRun" scope="prototype">
+    	<property name="fileHandler">
+    		<ref bean="cFileHandler"/>
+    	</property>
+    	<property name="compiler">
+    		<ref bean="cCompiler"/>
+    	</property>
+    	<property name="runner">
+    		<ref bean="cRunner"/>
+    	</property>
+    </bean>
+    
+    
+    <!-- java语言编译器的配置 -->
+    
+    <bean id="javaFileHandler" class="cn.pzhu.jsj.pts.bean.program.file.JavaFileHandler" scope="prototype">
+    	<property name="filePath">
+	            <value>${java.path}</value>
+	     </property>
+    </bean>
+    
+    <bean id="javaCompiler" class="cn.pzhu.jsj.pts.bean.program.compile.JavaCompiler" scope="prototype">
+    	<property name="filePath">
+	            <value>${java.path}</value>
+	     </property>
+    </bean>
+    
+    <bean id="javaRunner" class="cn.pzhu.jsj.pts.bean.program.run.JavaRunner" scope="prototype">
+    </bean>
+    
+    <bean id="javaCompileAndRun" class="cn.pzhu.jsj.pts.bean.program.CompileAndRun" scope="prototype">
+    	<property name="fileHandler">
+    		<ref bean="javaFileHandler"/>
+    	</property>
+    	<property name="compiler">
+    		<ref bean="javaCompiler"/>
+    	</property>
+    	<property name="runner">
+    		<ref bean="javaRunner"/>
+    	</property>
+    </bean>
+    
+	
+</beans>

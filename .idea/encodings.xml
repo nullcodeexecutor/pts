@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/src/main/java/cn/pzhu/jsj/pts/commom/CookieUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/cn/pzhu/jsj/pts/commom/MD5Util.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/cn/pzhu/jsj/pts/commom/PageJsonUtil.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/cn/pzhu/jsj/pts/commom/TimeUtils.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/commons-logging.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/log4j.properties" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/generatorConfig.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/mybatis-config.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mybatis/sqlmap/anysql.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/spring/ApplicationContext-context.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/springmvc-servlet.xml" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/html/error400.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/html/error403.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/html/error404.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/html/error500.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/html/error505.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/webdefault.xml" charset="UTF-8" />
+  </component>
+</project>
+

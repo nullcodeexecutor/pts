@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry
+            location="E:\learning_file\jar\db\mysql-connector-java-5.1.7.jar"/>
+
+    <context id="googleAdManager" targetRuntime="MyBatis3" >
+       <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/pts" userId="root" password="1991w1y1t" />
+    <javaModelGenerator targetPackage="cn.pzhu.jsj.pts.domain" targetProject="pts" />
+    <sqlMapGenerator targetPackage="cn.pzhu.jsj.pts.mapper" targetProject="pts" />
+    <javaClientGenerator targetPackage="cn.pzhu.jsj.pts.mapper" targetProject="pts" type="XMLMAPPER" />
+
+       <!--  <table tableName="admin" schema="pts"/>
+        <table tableName="code_answer" schema="pts"/>
+        <table tableName="code_question" schema="pts"/>
+        <table tableName="course" schema="pts"/> 
+        <table tableName="exam" schema="pts"/>
+        <table tableName="exam_paper" schema="pts"/>       
+        <table tableName="menu" schema="pts"/>  
+        <table tableName="paper_info" schema="pts"/>    
+		<table tableName="grade" schema="pts"/>
+        <table tableName="question_type" schema="pts"/>
+        <table tableName="select_option" schema="pts"/>
+        <table tableName="select_question" schema="pts"/>
+        <table tableName="student" schema="pts"/>        
+         <table tableName="teacher" schema="pts"/>
+        <table tableName="tf_question" schema="pts"/>
+        <table tableName="user" schema="pts"/>  
+        <table tableName="exam" schema="pts"/>
+        <table tableName="code_question" schema="pts"/>
+        <table tableName="select_question" schema="pts"/>        
+        <table tableName="tf_question" schema="pts"/> 
+        <table tableName="exam_paper" schema="pts"/>   
+        <table tableName="paper_info" schema="pts"/>     --> 
+        <table tableName="grade" schema="pts"/>
+        <table tableName="exam" schema="pts"/>
+
+    </context>
+</generatorConfiguration>

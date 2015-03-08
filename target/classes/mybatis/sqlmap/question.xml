@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.pzhu.jsj.pts.mapper.question">
+
+    <select id="selectTFQuestion" parameterType="map" resultType="cn.pzhu.jsj.pts.dto.TFQuestionDto">    	
+    	select tf.id id,tf.content content,tf.answer answer,tf.language_type languageType,tf.difficulty_type difficultyType,tf.create_time createTime,tea.name teacherName
+		  from tf_question tf left join teacher tea on tea.id=tf.teacher_id 
+			where 1=1 
+			  <if test="languageType != null">
+			    AND tf.language_type like #{languageType} 
+			  </if>
+			  <if test="difficultyType != null">
+			    AND tf.difficulty_type=#{difficultyType} 
+			  </if>
+			  <if test="teacherId != null">
+			    AND tf.teacher_id=#{teacherId} 
+			  </if>
+			  <if test="startTime != null">
+			  	<![CDATA[AND tf.create_time >= FROM_UNIXTIME(#{startTime}/1000) ]]>	
+			  </if>
+			  <if test="endTime != null">
+			  	<![CDATA[AND tf.create_time <= FROM_UNIXTIME(#{endTime}/1000) ]]>			    
+			  </if>
+			order by tf.create_time desc limit #{offset},#{pageSize}
+    </select>
+
+    <select id="selectCountTFQuestion" parameterType="map" resultType="int">
+    	select count(tf.id) from tf_question tf 
+			where 1=1 
+			  <if test="languageType != null">
+			    AND tf.language_type like #{languageType} 
+			  </if>
+			  <if test="difficultyType != null">
+			    AND tf.difficulty_type=#{difficultyType} 
+			  </if>
+			  <if test="teacherId != null">
+			    AND tf.teacher_id=#{teacherId} 
+			  </if>
+			  <if test="startTime != null">
+			  	<![CDATA[AND tf.create_time >= FROM_UNIXTIME(#{startTime}/1000) ]]>		
+			  </if>
+			  <if test="endTime != null">
+			  	<![CDATA[AND tf.create_time <= FROM_UNIXTIME(#{endTime}/1000) ]]>		
+			  </if>
+    </select>
+    
+    
+    
+    
+    
+    
+    
+    <select id="selectSelectQuestion" parameterType="map" resultType="cn.pzhu.jsj.pts.dto.SelectQuestionDto">    	
+    	select se.id id,se.content content,se.answer answer,se.language_type languageType,se.difficulty_type difficultyType,se.create_time createTime,tea.name teacherName
+		  from select_question se left join teacher tea on tea.id=se.teacher_id 
+			where 1=1 
+			  <if test="languageType != null">
+			    AND se.language_type like #{languageType} 
+			  </if>
+			  <if test="difficultyType != null">
+			    AND se.difficulty_type=#{difficultyType} 
+			  </if>
+			  <if test="teacherId != null">
+			    AND se.teacher_id=#{teacherId} 
+			  </if>
+			  <if test="startTime != null">
+			  	<![CDATA[AND se.create_time >= FROM_UNIXTIME(#{startTime}/1000) ]]>	
+			  </if>
+			  <if test="endTime != null">
+			  	<![CDATA[AND se.create_time <= FROM_UNIXTIME(#{endTime}/1000) ]]>			    
+			  </if>
+			order by se.create_time desc limit #{offset},#{pageSize}
+    </select>
+
+    <select id="selectCountSelectQuestion" parameterType="map" resultType="int">
+    	select count(se.id) from select_question se 
+			where 1=1 
+			  <if test="languageType != null">
+			    AND se.language_type like #{languageType} 
+			  </if>
+			  <if test="difficultyType != null">
+			    AND se.difficulty_type=#{difficultyType} 
+			  </if>
+			  <if test="teacherId != null">
+			    AND se.teacher_id=#{teacherId} 
+			  </if>
+			  <if test="startTime != null">
+			  	<![CDATA[AND se.create_time >= FROM_UNIXTIME(#{startTime}/1000) ]]>	
+			  </if>
+			  <if test="endTime != null">
+			  	<![CDATA[AND se.create_time <= FROM_UNIXTIME(#{endTime}/1000) ]]>			    
+			  </if>
+    </select>
+    
+    
+    
+    
+    
+    
+    
+     <select id="selectCodeQuestion" parameterType="map" resultType="cn.pzhu.jsj.pts.dto.CodeQuestionDto">    	
+    	select se.id id,se.content content,se.code code,se.language_type languageType,se.difficulty_type difficultyType,se.create_time createTime,tea.name teacherName
+		  from code_question se join teacher tea on tea.id=se.teacher_id 
+			where 1=1 
+			  <if test="languageType != null">
+			    AND se.language_type like #{languageType} 
+			  </if>
+			  <if test="difficultyType != null">
+			    AND se.difficulty_type=#{difficultyType} 
+			  </if>
+			  <if test="teacherId != null">
+			    AND se.teacher_id=#{teacherId} 
+			  </if>
+			  <if test="startTime != null">
+			  	<![CDATA[AND se.create_time >= FROM_UNIXTIME(#{startTime}/1000) ]]>	
+			  </if>
+			  <if test="endTime != null">
+			  	<![CDATA[AND se.create_time <= FROM_UNIXTIME(#{endTime}/1000) ]]>			    
+			  </if>
+			order by se.create_time desc limit #{offset},#{pageSize}
+    </select>
+
+    <select id="selectCountCodeQuestion" parameterType="map" resultType="int">
+    	select count(se.id) from code_question se 
+			where 1=1 
+			  <if test="languageType != null">
+			    AND se.language_type like #{languageType} 
+			  </if>
+			  <if test="difficultyType != null">
+			    AND se.difficulty_type=#{difficultyType} 
+			  </if>
+			  <if test="teacherId != null">
+			    AND se.teacher_id=#{teacherId} 
+			  </if>
+			  <if test="startTime != null">
+			  	<![CDATA[AND se.create_time >= FROM_UNIXTIME(#{startTime}/1000) ]]>	
+			  </if>
+			  <if test="endTime != null">
+			  	<![CDATA[AND se.create_time <= FROM_UNIXTIME(#{endTime}/1000) ]]>			    
+			  </if>
+    </select>
+    
+
+</mapper>
